@@ -1,16 +1,16 @@
 # cc8 SoloProject
+
+##API Solo Project
 My first solo project during enrollment to Code Chrysalis
 
-API Solo Project
-
-Objectives
+### Objectives
 - Create a CRUD API service using Express/GraphQL, Knex, and Postgres
 - Use test-doubles from Mocha or Jasmine to test my code
 - Seed my database with interesting data
 - Be able to document your API endpoints for other developers to use
 - Create a Basic/Simple Frontend e.g. API Documentation
 
-Summary
+### Summary
 I only had one weekend to create an MVP (minimum viable product)
 I also have to do a 5 minute presentation of your API on Monday morning (2019/4/29)
 
