@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  return knex.schema("ingredients", table => {
+  return knex.schema.createTable("ingredients", table => {
     table.increments().index();
 
     table.string("item_name").notNullable();
@@ -12,9 +12,11 @@ exports.up = function(knex, Promise) {
 
     table
       .foreign("effect")
-      .reference("id")
+      .references("id")
       .inTable("effects");
   });
 };
 
-exports.down = function(knex, Promise) {};
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable("ingredients");
+};
