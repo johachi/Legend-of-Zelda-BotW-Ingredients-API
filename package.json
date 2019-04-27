@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "Zelda Breath of the Wild Recepie and Ingredients Database",
   "main": "index.js",
+  "scripts": {
+    "test": "node tests/initialize.js && mocha tests/test.js && yarn lint",
+    "lint": "eslint --fix ./**/*.js",
+    "start": "node index.js",
+    "migrate": "knex migrate:latest --knexfile services/db/knexfile.js",
+    "rollback": "knex migrate:rollback --knexfile services/db/knexfile.js ",
+    "precommit": "pretty-quick --staged"
+  },
   "repository": "https://github.com/johachi/cc8SoloProject.git",
   "author": "Johannes Jarbratt <johannes.jarbratt+github@gmail.com>",
-  "license": "UNLISENCED",
+  "license": "UNLICENSED",
   "dependencies": {
     "knex": "^0.16.5",
     "pg": "^7.10.0"
