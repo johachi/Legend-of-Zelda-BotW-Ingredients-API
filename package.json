@@ -16,6 +16,12 @@
   "license": "UNLICENSED",
   "dependencies": {
     "knex": "^0.16.5",
-    "pg": "^7.10.0"
+    "pg": "^7.10.0",
+    "prettier": "^1.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.0.1"
   }
 }
