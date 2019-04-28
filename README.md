@@ -18,8 +18,8 @@ An Express server that:
   - [ ] serves up a basic HTML file that describes your API service
   - [x] has a create endpoint for adding to your database (POST)
   - [x] has a read endpoint for reading from your database (GET)
-  - [ ] has an update endpoint for editing to your database (PATCH/PUT)
-  - [ ] has a delete endpoint for deleting from your database (DELETE)
+  - [x] has an update endpoint for editing to your database (PATCH/PUT)
+  - [x] has a delete endpoint for deleting from your database (DELETE)
  
 ##### Alternative 2
 

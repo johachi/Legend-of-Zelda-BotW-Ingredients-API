@@ -2,6 +2,7 @@ const express = require("express");
 const getIngredients = require("../services/db/ingredients/get");
 const postIngredients = require("../services/db/ingredients/post");
 const deleteIngredients = require("../services/db/ingredients/delete");
+const patchIngredients = require("../services/db/ingredients/patch");
 const { db } = require("../config");
 const Knex = require("knex");
 
@@ -64,9 +65,26 @@ const server = () => {
       req.allIngredients,
       nameOrId
     )[0];
-    deleteIngredients(knex, ingredientToDelete.id).then(message => {
-      res.status(200).send(message);
-    });
+    deleteIngredients(knex, ingredientToDelete.id)
+      .then(message => {
+        res.status(200).send(message);
+      })
+      .catch(err => {
+        res.status(400).send(err.message);
+      });
+  });
+
+  app.patch("/api/ingredients/:nameOrId", (req, res) => {
+    const { nameOrId } = req.params;
+    const changes = req.body;
+    patchIngredients(knex, nameOrId, changes)
+      .then(changedIngredient => {
+        res.status(200).send(changedIngredient);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(400).send(err.message);
+      });
   });
 
   return app;
