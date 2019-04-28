@@ -1,0 +1,11 @@
+.item_key {
+  background: rgba(179, 179, 179, 0.712);
+}
+
+.item_key_type_number {
+  background: rgba(118, 171, 250, 0.712);
+}
+
+.item_key_type_string {
+  background: rgba(170, 255, 149, 0.712);
+}

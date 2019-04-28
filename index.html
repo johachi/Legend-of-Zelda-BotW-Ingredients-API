@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>Legend of Zelda - Breath of the Wild API</h1>
+    <div class="possible_action listing">
+      <h2>Listing Ingredients</h2>
+      You can list <b>all</b> ingredients in the database by sending a get request to <span class="api_link">/api/ingredients</span>. You can also choose to get information from only one ingredient by visiting <span class="api_link">/api/ingredients/:nameOrId</span>. <span class="higlighted_variable">:nameOrId</span> should be replaced with the index number of the item in the database, or by the ingredients exact name.
+    </div>
+    <div class="possible_action adding">
+      <h2>Adding Ingredients</h2>
+      You can add an ingredient to the database by sending a post request to <span class="api_link">/api/ingredients</span>. You can also choose to get information from only one ingredient by visiting <span class="api_link">/api/ingredients/</span>. The body of the post request should send the data as a JSON file. It should contain the following keys: 
+      <span class="item_key">item_name</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">type</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">hearts</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">effect</span> as <span class="item_key_type_number">number</span>,
+      <span class="item_key">potency</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">duration</span> as <span class="item_key_type_number">number</span>,,
+      <span class="item_key">resale_value</span> as <span class="item_key_type_number">number</span>. 
+    </div>
+    <div class="possible_action editing">
+      <h2>Editing Ingredients</h2>
+      You can edit an ingredient in the database by sending a patch request to <span class="api_link">/api/ingredients/:nameOrId</span>. The body of the patch request should contain the data to be edited as a JSON file. It should contain one or several of the following key-value pairs: 
+      <span class="item_key">item_name</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">type</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">hearts</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">effect</span> as <span class="item_key_type_number">number</span>,
+      <span class="item_key">potency</span> as <span class="item_key_type_string">string</span>,
+      <span class="item_key">duration</span> as <span class="item_key_type_number">number</span>,,
+      <span class="item_key">resale_value</span> as <span class="item_key_type_number">number</span>. 
+    </div>
+    <div class="possible_action removing">
+      <h2>Removing Ingredients</h2>
+      You can edit an ingredient in the database by sending a patch request to <span class="api_link">/api/ingredients/:Id</span>. The Id should be the Id in the database.
+    </div>
+  </body>
+</html>
