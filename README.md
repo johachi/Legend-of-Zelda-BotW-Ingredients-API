@@ -18,7 +18,7 @@ I also have to do a 5 minute presentation of your API on Monday morning (2019/4/
 An Express server that:
   - [ ] serves up a basic HTML file that describes your API service
   - [ ] has a create endpoint for adding to your database (POST)
-  - [ ] has a read endpoint for reading from your database (GET)
+  - [x] has a read endpoint for reading from your database (GET)
   - [ ] has an update endpoint for editing to your database (PATCH/PUT)
   - [ ] has a delete endpoint for deleting from your database (DELETE)
  
