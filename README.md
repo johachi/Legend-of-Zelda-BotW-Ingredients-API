@@ -11,17 +11,18 @@ My first solo project during enrollment to Code Chrysalis.
 ## Summary
 I only had one weekend (two days) to create an MVP (minimum viable product).
 I also have to do a 5 minute presentation of your API on Monday morning (2019/4/29).
-Due to private mather, I was only able to work on this API for one day.
+Due to private matter, I was only able to work on this API for one day.
 
 ## Development
 
 ```
-git clone https://github.com/birtles/rikaichamp.git
+git clone https://github.com/johachi/cc8SoloProject.git
 yarn install
+npm run migrate
+yarn knex seed:run
 ```
 
-Run the migration files with `npm run migrate`.
-Run the seed file with `yarn knex seed:run`. **Only run the seed files once. running them again will break the database since foreign keys will be incorrect.**
+**Only run the seed files once. Running them again will break the database since foreign keys will be incorrect.**
 
 Test can be run with 
 
