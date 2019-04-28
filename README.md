@@ -2,12 +2,11 @@
 My first solo project during enrollment to Code Chrysalis.
 
 ### Objectives
-- Create a CRUD API service using Express/GraphQL, Knex, and Postgres
-- Use test-doubles from Mocha or Jasmine to test my code
-- Seed my database with interesting data
-- Be able to document your API endpoints for other developers to use
-- Create a Basic/Simple Frontend e.g. API Documentation
-
+- [ ] Create a CRUD API service using Express/GraphQL, Knex, and Postgres
+- [ ] Use test-doubles from Mocha or Jasmine to test my code
+- [x] Seed my database with interesting data
+- [ ] Be able to document your API endpoints for other developers to use
+- [ ] Create a Basic/Simple Frontend e.g. API Documentation
 ### Summary
 I only had one weekend (two days) to create an MVP (minimum viable product).
 I also have to do a 5 minute presentation of your API on Monday morning (2019/4/29).
