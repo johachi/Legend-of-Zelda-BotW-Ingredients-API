@@ -26,7 +26,7 @@ const server = () => {
   app.use(express.json());
 
   app.use("/api/ingredients", (req, res, next) => {
-    const data = getIngredients(knex);
+    const data = getIngredients.getIngredients(knex);
 
     data
       .then(info => {
@@ -44,7 +44,7 @@ const server = () => {
 
   app.get("/api/ingredients/:nameOrId", (req, res) => {
     const { nameOrId } = req.params;
-    res.send(filterOnNameOrId(req.allIngredients, nameOrId));
+    res.send(filterOnNameOrId(req.allIngredients, nameOrId)[0]);
   });
 
   app.post("/api/ingredients/", (req, res) => {

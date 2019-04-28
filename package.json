@@ -4,7 +4,7 @@
   "description": "Zelda Breath of the Wild Recepie and Ingredients Database",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/initialize.js && mocha tests/test.js && yarn lint",
+    "test": "clear && mocha test",
     "lint": "eslint --fix ./**/*.js",
     "start": "node index.js",
     "migrate": "knex migrate:latest --knexfile services/db/knexfile.js",
@@ -20,9 +20,11 @@
     "chai-http": "^4.3.0",
     "express": "^4.16.4",
     "knex": "^0.16.5",
+    "mocha": "^6.1.4",
     "nodemon": "^1.18.11",
     "pg": "^7.10.0",
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "sinon": "^7.3.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

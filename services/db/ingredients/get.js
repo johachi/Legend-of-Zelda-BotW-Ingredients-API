@@ -1,4 +1,4 @@
-module.exports = (knex, ingredient) => {
+const getIngredients = (knex, ingredient) => {
   return knex("ingredients")
     .select()
     .then(data => {
@@ -10,3 +10,5 @@ module.exports = (knex, ingredient) => {
       });
     });
 };
+
+module.exports = { getIngredients };
