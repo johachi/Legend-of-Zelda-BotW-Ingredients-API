@@ -5,6 +5,8 @@ module.exports = (knex, ingredient) => {
       return data;
     })
     .catch(err => {
-      return err;
+      return new Promise((resolve, reject) => {
+        reject(new Error(err.message));
+      });
     });
 };
