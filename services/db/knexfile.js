@@ -4,14 +4,17 @@ module.exports = {
   client: "pg",
   connection: {
     host: "127.0.0.1",
-    database: "botw",
+    database: "botw"
   },
   port: 5432,
   pool: {
     min: 2,
-    max: 10,
+    max: 10
   },
   migrations: {
-    tableName: "knex_migrations",
+    tableName: "knex_migrations"
   },
+  seeds: {
+    directory: "./seeds"
+  }
 };
