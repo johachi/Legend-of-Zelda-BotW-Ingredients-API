@@ -44,7 +44,7 @@ Test can also be done thrugh insomnia or similar, ```localhost:3000``` are the d
 ## API Points
 Latest documentation can be found in `index.html` in the project root, or by accessing `localhost:3000` when running the server.
 
-## Goals of project
+## Project Goal
 - [x] A script that will set up and seed a database
 An Express server that:
   - [x] serves up a basic HTML file that describes your API service
