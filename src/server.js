@@ -1,6 +1,7 @@
 const express = require("express");
 const getIngredients = require("../services/db/ingredients/get");
 const postIngredients = require("../services/db/ingredients/post");
+const deleteIngredients = require("../services/db/ingredients/delete");
 const { db } = require("../config");
 const Knex = require("knex");
 
@@ -13,12 +14,18 @@ const knex = Knex({
   }
 });
 
+function filterOnNameOrId(array, nameOrId) {
+  return array.filter(ingredient => {
+    return ~~ingredient.id === ~~nameOrId || ingredient.item_name === nameOrId;
+  });
+}
+
 const server = () => {
   const app = express();
   app.use(express.json());
 
   app.use("/api/ingredients", (req, res, next) => {
-    const data = getIngredients(knex, 9);
+    const data = getIngredients(knex);
 
     data
       .then(info => {
@@ -30,19 +37,13 @@ const server = () => {
       });
   });
 
-  app.get("/api/ingredients", (req, res, next) => {
+  app.get("/api/ingredients", (req, res) => {
     res.send(req.allIngredients);
   });
 
   app.get("/api/ingredients/:nameOrId", (req, res) => {
     const { nameOrId } = req.params;
-    res.send(
-      req.allIngredients.filter(ingredient => {
-        return (
-          ~~ingredient.id === ~~nameOrId || ingredient.item_name === nameOrId
-        );
-      })
-    );
+    res.send(filterOnNameOrId(req.allIngredients, nameOrId));
   });
 
   app.post("/api/ingredients/", (req, res) => {
@@ -55,6 +56,17 @@ const server = () => {
         res.status(400).send("Invalid Ingredient");
         console.log(err);
       });
+  });
+
+  app.delete("/api/ingredients/:nameOrId", (req, res) => {
+    const { nameOrId } = req.params;
+    const ingredientToDelete = filterOnNameOrId(
+      req.allIngredients,
+      nameOrId
+    )[0];
+    deleteIngredients(knex, ingredientToDelete.id).then(message => {
+      res.status(200).send(message);
+    });
   });
 
   return app;
