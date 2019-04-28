@@ -5,17 +5,46 @@ My first solo project during enrollment to Code Chrysalis.
 - [x] Create a CRUD API service using Express/GraphQL, Knex, and Postgres
 - [x] Use test-doubles from Mocha or Jasmine to test my code
 - [x] Seed my database with interesting data
-- [ ] Be able to document your API endpoints for other developers to use
+- [x] Be able to document your API endpoints for other developers to use
 - [x] Create a Basic/Simple Frontend e.g. API Documentation
-### Summary
+
+## Summary
 I only had one weekend (two days) to create an MVP (minimum viable product).
 I also have to do a 5 minute presentation of your API on Monday morning (2019/4/29).
 Due to private mather, I was only able to work on this API for one day.
 
-###
+## Development
 
-### Requirements
-##### Alternative 1
+```
+git clone https://github.com/birtles/rikaichamp.git
+yarn install
+```
+
+Run the migration files with `npm run migrate`.
+Run the seed file with `yarn knex seed:run`. **Only run the seed files once. running them again will break the database since foreign keys will be incorrect.**
+
+Test can be run with 
+
+### Running
+
+To run the server, type the following into the console.
+
+```
+yarn dev
+```
+
+### Testing
+
+```
+yarn test
+```
+
+Test can also be done thrugh insomnia or similar, ```localhost:3000``` are the default entry point.
+
+## API Points
+Latest documentation can be found in `index.html` in the project root, or by accessing `localhost:3000` when running the server.
+
+## Goals of project
 - [x] A script that will set up and seed a database
 An Express server that:
   - [x] serves up a basic HTML file that describes your API service
