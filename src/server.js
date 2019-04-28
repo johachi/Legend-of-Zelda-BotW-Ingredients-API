@@ -1,5 +1,6 @@
 const express = require("express");
 const getIngredients = require("../services/db/ingredients/get");
+const postIngredients = require("../services/db/ingredients/post");
 const { db } = require("../config");
 const Knex = require("knex");
 
@@ -37,12 +38,23 @@ const server = () => {
     const { nameOrId } = req.params;
     res.send(
       req.allIngredients.filter(ingredient => {
-        console.log(ingredient.item_name, nameOrId);
         return (
           ~~ingredient.id === ~~nameOrId || ingredient.item_name === nameOrId
         );
       })
     );
+  });
+
+  app.post("/api/ingredients/", (req, res) => {
+    const newIngredient = req.body;
+    postIngredients(knex, newIngredient)
+      .then(postedIngredient => {
+        res.send(postedIngredient);
+      })
+      .catch(err => {
+        res.status(400).send("Invalid Ingredient");
+        console.log(err);
+      });
   });
 
   return app;
