@@ -4,7 +4,7 @@ const sinon = require("sinon");
 chai.use(chaiHttp);
 chai.should();
 const { server } = require("../src/server");
-const getIngredients = require("../services/db/ingredients/get");
+const ingredientsAction = require("../services/db/ingredients/ingredientsAction");
 
 const app = server();
 
@@ -65,7 +65,7 @@ describe("Legend of Zelda API", () => {
     describe("GET /api/ingredients - return ingredients data", () => {
       it("should return one ingredients", async () => {
         // setup
-        const fr = sinon.stub(getIngredients, "getIngredients").returns(
+        const fr = sinon.stub(ingredientsAction, "get").returns(
           new Promise((resolver, rejector) => {
             resolver([oneIngredient]);
           })
@@ -84,7 +84,7 @@ describe("Legend of Zelda API", () => {
 
       it("should return all ingredients", async () => {
         // setup
-        const fr = sinon.stub(getIngredients, "getIngredients").returns(
+        const fr = sinon.stub(ingredientsAction, "get").returns(
           new Promise((resolver, rejector) => {
             resolver(severalIngredients);
           })
@@ -96,6 +96,67 @@ describe("Legend of Zelda API", () => {
         // assert
         res.should.be.json;
         res.body.should.deep.equal(severalIngredients);
+
+        // teardown
+        fr.restore();
+      });
+    });
+
+    describe("POST /api/ingredients - return posted ingredient", () => {
+      it("should return ingredients that was posted", async () => {
+        // setup
+        const fr = sinon.stub(ingredientsAction, "post").returns(
+          new Promise((resolver, rejector) => {
+            resolver(oneIngredient);
+          })
+        );
+
+        // exercise
+        const res = await request.get("/api/ingredients/10");
+
+        // assert
+        res.should.be.json;
+        res.body.should.deep.equal(oneIngredient);
+
+        // teardown
+        fr.restore();
+      });
+    });
+
+    describe("DELETE /api/ingredients - return posted ingredient", () => {
+      it("should return deleted ingredient", async () => {
+        // setup
+        const fr = sinon.stub(ingredientsAction, "del").returns(
+          new Promise((resolver, rejector) => {
+            resolver("Item was deleted");
+          })
+        );
+
+        // exercise
+        const res = await request.delete("/api/ingredients/10");
+
+        // assert
+        res.text.should.equal("Item was deleted");
+
+        // teardown
+        fr.restore();
+      });
+    });
+
+    describe("PATCH /api/ingredients - return posted ingredient", () => {
+      it("should return patched ingredient", async () => {
+        // setup
+        const fr = sinon.stub(ingredientsAction, "patch").returns(
+          new Promise((resolver, rejector) => {
+            resolver(oneIngredient);
+          })
+        );
+
+        // exercise
+        const res = await request.patch("/api/ingredients/10");
+
+        // assert
+        res.body.should.deep.equal(oneIngredient);
 
         // teardown
         fr.restore();

@@ -1,8 +1,5 @@
 const express = require("express");
-const getIngredients = require("../services/db/ingredients/get");
-const postIngredients = require("../services/db/ingredients/post");
-const deleteIngredients = require("../services/db/ingredients/delete");
-const patchIngredients = require("../services/db/ingredients/patch");
+const ingredientsAction = require("../services/db/ingredients/ingredientsAction");
 const { db } = require("../config");
 const Knex = require("knex");
 
@@ -26,7 +23,7 @@ const server = () => {
   app.use(express.json());
 
   app.use("/api/ingredients", (req, res, next) => {
-    const data = getIngredients.getIngredients(knex);
+    const data = ingredientsAction.get(knex);
 
     data
       .then(info => {
@@ -49,7 +46,8 @@ const server = () => {
 
   app.post("/api/ingredients/", (req, res) => {
     const newIngredient = req.body;
-    postIngredients(knex, newIngredient)
+    ingredientsAction
+      .post(knex, newIngredient)
       .then(postedIngredient => {
         res.send(postedIngredient);
       })
@@ -65,7 +63,8 @@ const server = () => {
       req.allIngredients,
       nameOrId
     )[0];
-    deleteIngredients(knex, ingredientToDelete.id)
+    ingredientsAction
+      .del(knex, ingredientToDelete.id)
       .then(message => {
         res.status(200).send(message);
       })
@@ -77,7 +76,8 @@ const server = () => {
   app.patch("/api/ingredients/:nameOrId", (req, res) => {
     const { nameOrId } = req.params;
     const changes = req.body;
-    patchIngredients(knex, nameOrId, changes)
+    ingredientsAction
+      .patch(knex, nameOrId, changes)
       .then(changedIngredient => {
         res.status(200).send(changedIngredient);
       })
