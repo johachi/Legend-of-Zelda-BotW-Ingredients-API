@@ -1,5 +1,5 @@
 # CC8 SoloProject - API Solo Project
-My first solo project during enrollment to Code Chrysalis.
+My first solo project during enrollment at Code Chrysalis.
 
 ### Objectives
 - [x] Create a CRUD API service using Express/GraphQL, Knex, and Postgres
